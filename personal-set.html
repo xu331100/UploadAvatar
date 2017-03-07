@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传头像</title>
+		<link rel="stylesheet"  href="personal.css" />
+		<script src="jquery-1.9.1.min.js"></script>
+	</head>
+	<body>
+		<div class="main clear">
+		
+			<div class="box02">
+						<div class="imageBox">
+							<img id="avatar" src="preview.png"/>
+						   <!-- <div class="spinner" style="display: none">Loading...</div>-->
+						</div>
+						<form id="crop_form" method="post" action=".">
+							<!--通过生成尺寸  后台获取尺寸再进行裁剪-->
+							<input id="id_top" type="hidden" name="top" >
+							<input id="id_left" type="hidden" name="left">
+							<input id="id_right" type="hidden" name="right">
+							<input id="id_bottom" type="hidden" name="bottom">
+							<input id="id_width" type="hidden" /> 
+							<input id="id_height" type="hidden" />
+						</form>
+						<div class="action"> 
+						    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
+							    <label for="upload-file">上传</label>
+							    </a>
+							    <input type="file" class="" name="upload-file" id="upload-file" />
+						    </div>
+						    <input type="button" id="btnCrop"  class="Btnsty_peyton" value="保存">
+						    <div class="imgIntro">你可以上传JPG、JPEG、PNG格式文件，限制大小1M以内</div>
+
+						</div>
+							<div class="cropped" >
+								<ul>
+									<li >
+										<span>100*100</span>
+										<span class="img01" id="small_preview01"><img src="preview.png" id="avatar1" style="margin-left: -50px;width: 200px;"/></span> 
+									</li>
+									<li >
+										<span>55*55</span>
+										<span class="img02" id="small_preview02"><img src="preview.png" id="avatar2" style="margin-left: -25px;width: 110px;"/></span>
+									</li>
+									<li>
+										<span>32*32</span>
+										<span class="img03"  id="small_preview03"><img src="preview.png" id="avatar3" style="margin-left: -15px;width: 64px;"/></span>
+									</li>
+								</ul>
+							</div>
+		</div>
+		
+		<script src="personal.js"></script>
+		<script src="jquery.imgareaselect.pack.js"></script>	
+		<script>
+			$(function(){
+				//上传头像
+				$('img#avatar').imgAreaSelect({
+						aspectRatio: "1:1",
+						x1: 100,
+						y1:0,
+						x2: 300,
+						y2: 200,
+						onSelectEnd: selectInit,
+						onSelectChange: preview
+					});
+			})
+    </script>
+</html>
